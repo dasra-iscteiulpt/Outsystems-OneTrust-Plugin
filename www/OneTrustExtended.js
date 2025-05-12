@@ -9,6 +9,10 @@ var exports = {
 	showPreferenceCenterUI: () => {
 		exec(null, null, pluginName, "showPreferenceCenterUI");
 	},
+	 //Boolean banner show methods
+    	shouldShowBanner: (success, error) => {
+      		exec(success, error, pluginName, 'shouldShowBanner')
+    	},
 };
 
 module.exports = exports;
