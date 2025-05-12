@@ -42,6 +42,17 @@ public class OneTrustExtended extends OneTrust {
         }
     }
 
+    private void shouldShowBanner(CallbackContext callbackContext){
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                int shouldShow = ot.shouldShowBanner() ? 1:0; //Success callback has to be an int in Android, so we send back 1 or 0. 1 = truthy in JS
+                callbackContext.success(shouldShow);
+            }
+        };
+        runInThreadPool(runnable);
+    }
+    
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         switch (action){
 
